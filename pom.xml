@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.github.dong4j</groupId>
+    <artifactId>coco-supreme</artifactId>
+    <version>2023.1.1-SNAPSHOT</version>
+    <relativePath/>
+  </parent>
+
+  <artifactId>coco-mediator</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+  <name>Coco Mediator</name>
+  <description>基于 Vert.X 开发的业务中台底层组件, 用于 HTTP 代理</description>
+
+  <url>https://github.com/dong4j/coco-mediator</url>
+
+  <developers>
+    <developer>
+      <id>dong4j</id>
+      <name>dong4j</name>
+      <email>dong4j@gmail.com</email>
+      <roles>
+        <role>designer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <!-- mvn scm:checkin -Dmessage=xxx : push 代码; mvn scm:update : 更新代码 -->
+    <url>https://github.com/dong4j/coco-mediator</url>
+    <!-- scm:[git/svn]:地址 -->
+    <connection>scm:git:git://github.com/dong4j/coco-mediator.git</connection>
+    <developerConnection>scm:git:ssh://github.com/dong4j/coco-mediator.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <revision>2023.1.1-SNAPSHOT</revision>
+  </properties>
+
+  <modules>
+    <module>coco-mediator-common</module>
+    <module>coco-mediator-client</module>
+    <module>coco-mediator-server</module>
+  </modules>
+
+</project>
