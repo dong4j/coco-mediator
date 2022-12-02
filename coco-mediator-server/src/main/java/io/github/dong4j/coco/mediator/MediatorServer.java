@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) $year dong4j
+ * Copyright (c)  2022. dong4j
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
