@@ -1,3 +1,4 @@
+package io.github.dong4j.coco.mediator;
 
 /**
  * <p>Description:  </p>
