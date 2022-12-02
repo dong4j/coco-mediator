@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) $year dong4j
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package io.github.dong4j.coco.mediator;
 
 import java.util.Base64;
@@ -27,6 +51,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 public class MediatorServer extends AbstractVerticle {
+    /** Mediator handler */
     private MediatorHandler mediatorHandler;
 
     /**
@@ -37,7 +62,7 @@ public class MediatorServer extends AbstractVerticle {
     @PostConstruct
     public void init() {
         Vertx vertx = Vertx.vertx();
-        // 部署verticle，这里会调用start方法
+        // 部署 verticle，这里会调用 start 方法
         vertx.deployVerticle(this);
     }
 
@@ -48,17 +73,17 @@ public class MediatorServer extends AbstractVerticle {
      */
     @Override
     public void start() {
-        // 实例化一个路由器出来，用来路由不同的rest接口
+        // 实例化一个路由器出来，用来路由不同的 rest 接口
         Router router = Router.router(vertx);
-        // 增加一个处理器，将请求的上下文信息，放到RoutingContext中
+        // 增加一个处理器，将请求的上下文信息，放到 RoutingContext 中
         router.route().handler(BodyHandler.create());
-        // 处理一个post方法的rest接口
+        // 处理一个 post 方法的 rest 接口
         router.post("/api").handler(this::handlePost);
-        // 处理一个get方法的rest接口
+        // 处理一个 get 方法的 rest 接口
         router.get("/api").handler(this::handleGet);
         router.get("/api/time").handler(this::handleTime);
         router.get("/api/ping").handler(this::handlePing);
-        // 创建一个httpserver，监听8080端口，并交由路由器分发处理用户请求
+        // 创建一个 httpserver，监听 8080 端口，并交由路由器分发处理用户请求
         vertx.createHttpServer().requestHandler(router).listen(8080);
     }
 
@@ -91,7 +116,7 @@ public class MediatorServer extends AbstractVerticle {
     private void handlePost(RoutingContext context) {
         final RequestData requestData = build(context.request(), context.body().buffer().getBytes());
         final byte[] result = mediatorHandler.handle(requestData);
-        // 申明response类型为json格式，结束response并且输出json字符串
+        // 申明 response 类型为 json 格式，结束 response 并且输出 json 字符串
         context.response().putHeader("content-type", "application/json").end(new String(result));
     }
 
