@@ -10,7 +10,7 @@
   <artifactId>coco-mediator-server</artifactId>
 
   <properties>
-    <vertx.version>4.3.5</vertx.version>
+    <vertx.version>4.3.6</vertx.version>
   </properties>
 
   <dependencies>
