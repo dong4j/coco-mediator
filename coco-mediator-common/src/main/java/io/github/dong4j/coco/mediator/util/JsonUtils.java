@@ -60,7 +60,7 @@ import lombok.extern.slf4j.Slf4j;
 @SuppressWarnings("checkstyle:MethodLimit")
 public class JsonUtils {
     /** PATTERN_DATETIME */
-    public static final String PATTERN_DATETIME = System.getProperty("spark.rest.json.date-formate", "yyyy-MM-dd HH:mm:ss");
+    public static final String PATTERN_DATETIME = System.getProperty("coco.rest.json.date-formate", "yyyy-MM-dd HH:mm:ss");
     /** Empty array */
     public static final byte[] EMPTY_ARRAY = new byte[0];
     /** MESSAGE */
@@ -1040,7 +1040,7 @@ public class JsonUtils {
             // 去掉默认的时间戳格式
             objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
             // 设置为中国上海时区
-            String zone = System.getProperty("spark.rest.json.time-zone", "GMT+8");
+            String zone = System.getProperty("coco.rest.json.time-zone", "GMT+8");
             objectMapper.setTimeZone(TimeZone.getTimeZone(zone));
             // 单引号
             objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);

@@ -5,7 +5,7 @@ package io.github.dong4j.coco.mediator;
  *
  * @author dong4j
  * @version 1.0.0
- * @email "mailto:Spark.Team@gmail.com"
+ * @email "mailto:dong4j@gmail.com"
  * @date 2022.11.30 14:51
  * @since 2023.1.1
  */
